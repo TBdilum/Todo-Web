@@ -1,11 +1,11 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { styled, css } from '@mui/system';
-import { Modal as BaseModal } from '@mui/base/Modal';
-import { Button } from '@mui/base/Button';
+import * as React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import { styled, css } from "@mui/system";
+import { Modal as BaseModal } from "@mui/base/Modal";
+import { Button } from "@mui/base/Button";
 
-export default function AddTodo() {
+export default function EditTodo() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -31,11 +31,9 @@ export default function AddTodo() {
           <p id="parent-modal-description" className="modal-description">
             Title
           </p>
-          <input type='text' placeholder='Todo Name Here'></input>
-          <p className="modal-description">
-            Description
-          </p>
-          <input type='text' placeholder='Todo Description Here'></input>
+          <input type="text" placeholder="Todo Name Here"></input>
+          <p className="modal-description">Description</p>
+          <input type="text" placeholder="Todo Description Here"></input>
           <Button>+ Add</Button>
           <Button>Cancel</Button>
         </ModalContent>
@@ -48,7 +46,7 @@ const Backdrop = React.forwardRef((props, ref) => {
   const { open, className, ...other } = props;
   return (
     <div
-      className={clsx({ 'base-Backdrop-open': open }, className)}
+      className={clsx({ "base-Backdrop-open": open }, className)}
       ref={ref}
       {...other}
     />
@@ -61,25 +59,25 @@ Backdrop.propTypes = {
 };
 
 const blue = {
-  200: '#99CCFF',
-  300: '#66B2FF',
-  400: '#3399FF',
-  500: '#007FFF',
-  600: '#0072E5',
-  700: '#0066CC',
+  200: "#99CCFF",
+  300: "#66B2FF",
+  400: "#3399FF",
+  500: "#007FFF",
+  600: "#0072E5",
+  700: "#0066CC",
 };
 
 const grey = {
-  50: '#F3F6F9',
-  100: '#E5EAF2',
-  200: '#DAE2ED',
-  300: '#C7D0DD',
-  400: '#B0B8C4',
-  500: '#9DA8B7',
-  600: '#6B7A90',
-  700: '#434D5B',
-  800: '#303740',
-  900: '#1C2025',
+  50: "#F3F6F9",
+  100: "#E5EAF2",
+  200: "#DAE2ED",
+  300: "#C7D0DD",
+  400: "#B0B8C4",
+  500: "#9DA8B7",
+  600: "#6B7A90",
+  700: "#434D5B",
+  800: "#303740",
+  900: "#1C2025",
 };
 
 const Modal = styled(BaseModal)`
@@ -100,16 +98,16 @@ const StyledBackdrop = styled(Backdrop)`
 `;
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
 };
 
-const ModalContent = styled('div')(
+const ModalContent = styled("div")(
   ({ theme }) => css`
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-weight: 500;
     text-align: start;
     position: relative;
@@ -117,13 +115,13 @@ const ModalContent = styled('div')(
     flex-direction: column;
     gap: 8px;
     overflow: hidden;
-    background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    background-color: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
     border-radius: 8px;
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
+    border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
     box-shadow: 0 4px 12px
-      ${theme.palette.mode === 'dark' ? 'rgb(0 0 0 / 0.5)' : 'rgb(0 0 0 / 0.2)'};
+      ${theme.palette.mode === "dark" ? "rgb(0 0 0 / 0.5)" : "rgb(0 0 0 / 0.2)"};
     padding: 24px;
-    color: ${theme.palette.mode === 'dark' ? grey[50] : grey[900]};
+    color: ${theme.palette.mode === "dark" ? grey[50] : grey[900]};
 
     & .modal-title {
       margin: 0;
@@ -135,7 +133,7 @@ const ModalContent = styled('div')(
       margin: 0;
       line-height: 1.5rem;
       font-weight: 400;
-      color: ${theme.palette.mode === 'dark' ? grey[400] : grey[800]};
+      color: ${theme.palette.mode === "dark" ? grey[400] : grey[800]};
       margin-bottom: 4px;
     }
   `,
@@ -152,22 +150,22 @@ const TriggerButton = styled(Button)(
   color: white;
   transition: all 150ms ease;
   cursor: pointer;
-  background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-  color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
+  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
+  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
+  color: ${theme.palette.mode === "dark" ? grey[200] : grey[900]};
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 
   &:hover {
-    background: ${theme.palette.mode === 'dark' ? grey[800] : grey[50]};
-    border-color: ${theme.palette.mode === 'dark' ? grey[600] : grey[300]};
+    background: ${theme.palette.mode === "dark" ? grey[800] : grey[50]};
+    border-color: ${theme.palette.mode === "dark" ? grey[600] : grey[300]};
   }
 
   &:active {
-    background: ${theme.palette.mode === 'dark' ? grey[700] : grey[100]};
+    background: ${theme.palette.mode === "dark" ? grey[700] : grey[100]};
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 4px ${theme.palette.mode === 'dark' ? blue[300] : blue[200]};
+    box-shadow: 0 0 0 4px ${theme.palette.mode === "dark" ? blue[300] : blue[200]};
     outline: none;
   }
 `,
@@ -187,7 +185,9 @@ const ModalButton = styled(Button)(
   cursor: pointer;
   border: 1px solid ${blue[500]};
   box-shadow: 0 2px 1px ${
-    theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(45, 45, 60, 0.2)'
+    theme.palette.mode === "dark"
+      ? "rgba(0, 0, 0, 0.5)"
+      : "rgba(45, 45, 60, 0.2)"
   }, inset 0 1.5px 1px ${blue[400]}, inset 0 -2px 1px ${blue[600]};
 
   &:hover {
@@ -200,7 +200,7 @@ const ModalButton = styled(Button)(
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 4px ${theme.palette.mode === 'dark' ? blue[300] : blue[200]};
+    box-shadow: 0 0 0 4px ${theme.palette.mode === "dark" ? blue[300] : blue[200]};
     outline: none;
   }
 
