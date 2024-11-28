@@ -6,8 +6,10 @@ import clsx from "clsx";
 import { styled, css } from "@mui/system";
 import { Modal as BaseModal } from "@mui/base/Modal";
 import { Button } from "@mui/base/Button";
+import { useDarkMode } from "./DarkMode";
 
 const Todo = () => {
+  const { darkMode } = useDarkMode();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const todos = useSelector((state) => state.todos);
@@ -58,7 +60,7 @@ const Todo = () => {
           justifyContent: "center",
         }}
       >
-        <h1>Todo List</h1>
+        <h1 style={{ color: darkMode ? "white" : "black" }}>Todo List</h1>
 
         <TriggerButton onClick={handleOpen}>+ Add New Todo</TriggerButton>
         <Modal
@@ -108,7 +110,13 @@ const Todo = () => {
               paddingLeft: "2rem",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                color: darkMode ? "#fff" : "#000",
+              }}
+            >
               <strong style={{ marginRight: "20px" }}>
                 Title:{todo.Title}
               </strong>

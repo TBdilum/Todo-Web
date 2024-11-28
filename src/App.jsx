@@ -1,4 +1,5 @@
 import React from "react";
+import { DarkModeProvider } from "./Components/DarkMode";
 import {
   Route,
   RouterProvider,
@@ -13,10 +14,24 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<TodoPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-      </Route>,
-    ),
+        <Route
+          index
+          element={
+            <DarkModeProvider>
+              <TodoPage />
+            </DarkModeProvider>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <DarkModeProvider>
+              <SettingsPage />
+            </DarkModeProvider>
+          }
+        />
+      </Route>
+    )
   );
 
   return <RouterProvider router={router} />;

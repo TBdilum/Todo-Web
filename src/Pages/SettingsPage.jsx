@@ -1,7 +1,18 @@
 import { Switch } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDarkMode } from "../Components/DarkMode";
 
 function SettingsPage() {
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.style.backgroundColor = "#333";
+    } else {
+      document.body.style.backgroundColor = "#f9f9f9";
+    }
+  }, [darkMode]);
+
   return (
     <div
       style={{
@@ -21,7 +32,7 @@ function SettingsPage() {
       }}
     >
       <span style={{ fontWeight: "bold" }}>Dark Mode</span>
-      <Switch checked={darkMode} onChange={handleToggle} />
+      <Switch checked={darkMode} onChange={toggleDarkMode} />
     </div>
   );
 }
