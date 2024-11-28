@@ -99,13 +99,22 @@ const Todo = () => {
             key={todo.id}
             style={{
               display: "flex",
-
+              paddingBottom: "2rem",
+              paddingTop: "1rem",
+              boxShadow: "0px 4px 6px rgba(0.4, 0, 0, 0.3)",
+              borderRadius: "10px",
               marginBottom: "10px",
               borderBottom: "1px solid #ddd",
+              paddingLeft: "2rem",
             }}
           >
-            <strong style={{ marginRight: "20px" }}>{todo.Title}</strong>:
-            {todo.Description}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <strong style={{ marginRight: "20px" }}>
+                Title:{todo.Title}
+              </strong>
+              <br />
+              Description: {todo.Description}
+            </div>
             <div
               style={{
                 display: "flex",
@@ -118,8 +127,20 @@ const Todo = () => {
                 type="checkbox"
                 checked={todo.completed}
                 onChange={() => handleToggleComplete(todo.id)}
+                style={{ width: "100px", height: "30px" }}
               />
-              <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+              <button
+                onClick={() => handleDeleteTodo(todo.id)}
+                style={{
+                  width: "auto",
+                  height: "30px",
+                  backgroundColor: "red",
+                  color: "white",
+                  borderRadius: "5px",
+                }}
+              >
+                Delete
+              </button>
             </div>
           </li>
         ))}
