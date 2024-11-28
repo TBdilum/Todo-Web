@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, deleteTodo, toggleComplete } from "./TodoSlice";
+import { addTodo, deleteTodo, toggleComplete, editTodo } from "./TodoSlice";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { styled, css } from "@mui/system";
@@ -14,6 +14,8 @@ const Todo = () => {
   const [description, setDescription] = useState("");
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+  const [editMode, setEditMode] = useState(false);
+  const [currentTodoId, setCurrentTodoId] = useState(null);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -31,6 +33,29 @@ const Todo = () => {
       handleClose();
     } else {
       alert("Please enter both a title and description.");
+    }
+  };
+
+  const handleEditTodo = () => {
+    if (title && description && currentTodoId) {
+      dispatch(
+        editTodo({
+          id: currentTodoId,
+          updatedTitle: title,
+          updatedDescription: description,
+        })
+      );
+      handleClose();
+    }
+  };
+  const handleEditClick = (id) => {
+    const todo = todos.find((todo) => todo.id === id);
+    if (todo) {
+      setTitle(todo.Title);
+      setDescription(todo.Description);
+      setCurrentTodoId(todo.id);
+      setEditMode(true);
+      handleOpen();
     }
   };
 
@@ -80,17 +105,20 @@ const Todo = () => {
             </p>
             <input
               type="text"
+              value={title}
               placeholder="Todo Name Here"
               onChange={handleTitleChange}
             ></input>
             <p className="modal-description">Description</p>
             <input
               type="text"
+              value={description}
               placeholder="Todo Description Here"
-              on
               onChange={handleDescriptionChange}
             ></input>
-            <Button onClick={handleAddTodo}>+ Add</Button>
+            <Button onClick={editMode ? handleEditTodo : handleAddTodo}>
+              {editMode ? "Update Todo" : "+ Add"}
+            </Button>
             <Button onClick={handleClose}>Cancel</Button>
           </ModalContent>
         </Modal>
@@ -138,6 +166,18 @@ const Todo = () => {
                 onChange={() => handleToggleComplete(todo.id)}
                 style={{ width: "100px", height: "30px" }}
               />
+              <button
+                onClick={() => handleEditClick(todo.id)}
+                style={{
+                  width: "auto",
+                  height: "30px",
+                  backgroundColor: "green",
+                  color: "white",
+                  borderRadius: "5px",
+                }}
+              >
+                Edit
+              </button>
               <button
                 onClick={() => handleDeleteTodo(todo.id)}
                 style={{
