@@ -58,6 +58,7 @@ const Todo = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          backgroundcolor: darkMode ? "#fff" : "#000",
         }}
       >
         <h1 style={{ color: darkMode ? "white" : "black" }}>Todo List</h1>
