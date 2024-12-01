@@ -17,33 +17,53 @@ export default function Navbar() {
       sx={{
         display: "flex",
         justifyContent: "space-between",
-        marginBottom: "none",
-        backgroundColor: "#0096FF",
-        borderRadius: "0.5rem",
-        borderShadow: "0.1rem 0.1rem 0.1rem #000000",
         alignItems: "center",
+        marginRight: "20px",
+        marginLeft: "5px",
+        marginTop: "10px",
+        backgroundColor: "#DEB9FA",
+        boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.1)",
+        padding: "10px",
+        borderRadius: "16px",
       }}
     >
-      <PlaylistAddCheckIcon style={{ fontSize: "4rem", color: "#305cdef" }} />
+      <PlaylistAddCheckIcon style={{ fontSize: "4rem", color: "#AB6ADC" }} />
 
       <Tabs
         value={value}
         onChange={handleChange}
-        sx={{ height: "fit-content" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          paddingLeft: "300px",
+          "& .MuiTabs-indicator": {
+            backgroundColor: "#C483F6",
+            bottom: "-3px",
+            height: "4px",
+            borderRadius: "4px",
+          },
+        }}
       >
         <Tab
           component={Link}
           to="/"
           label="Todos"
           sx={{
-            color: value === 0 ? "white" : "black",
-            backgroundColor: value === 0 ? "#59b5f7" : "transparent",
-            borderColor: value === 0 ? "#000000" : "transparent",
-            borderWidth: value === 0 ? "10px" : "none",
-            padding: "2rem 1rem",
-            border: "1px solid #000000",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            "&:hover": { backgroundColor: "#59b5f7", color: "white" },
+            color: "white",
+            backgroundColor: "#BD75F4",
+            padding: "0.5rem 1rem",
+            borderRadius: "16px",
+            height: "auto",
+            "&:hover": {
+              backgroundColor: "#C483F6",
+              transition: "ease-in 0.2s",
+            },
+            marginRight: "16px",
+            "&.Mui-selected": {
+              color: "white",
+              backgroundColor: "#C483F6",
+            },
+            boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.1)",
           }}
         />
         <Tab
@@ -51,14 +71,21 @@ export default function Navbar() {
           to="/settings"
           label="Settings"
           sx={{
-            color: value === 1 ? "white" : "black",
-            backgroundColor: value === 1 ? "#59b5f7" : "transparent",
-            borderColor: value === 1 ? "#000000" : "transparent",
-            borderWidth: value === 1 ? "10px" : "none",
-            padding: "2rem 1rem",
-            border: "1px solid #000000",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            "&:hover": { backgroundColor: "#59b5f7", color: "white" },
+            color: "white",
+            backgroundColor: "#BD75F4",
+            padding: "0.5rem 1rem",
+            borderRadius: "16px",
+            height: "auto",
+            boxShadow: "2px 2px 2px 2px rgba(0,0,0,0.1)",
+            "&:hover": {
+              backgroundColor: "#C483F6",
+              transition: "ease-in 0.2s",
+            },
+            marginRight: "16px",
+            "&.Mui-selected": {
+              color: "white",
+              backgroundColor: "#C483F6",
+            },
           }}
         />
       </Tabs>

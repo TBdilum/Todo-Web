@@ -1,5 +1,4 @@
-import React from "react";
-import { DarkModeProvider } from "./Components/DarkMode";
+import { DarkModeProvider } from "./components/DarkMode";
 import {
   Route,
   RouterProvider,
