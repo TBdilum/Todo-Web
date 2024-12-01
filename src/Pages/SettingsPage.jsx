@@ -1,6 +1,6 @@
 import { Switch } from "@mui/material";
-import React, { useState, useEffect } from "react";
-import { useDarkMode } from "../Components/DarkMode";
+import { useEffect } from "react";
+import { useDarkMode } from "../components/DarkMode";
 
 function SettingsPage() {
   const { darkMode, toggleDarkMode } = useDarkMode();

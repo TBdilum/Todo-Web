@@ -1,7 +1,6 @@
-import React from "react";
-import Todo from "../Components/Todo";
+import Todo from "../components/Todo";
 import { Provider } from "react-redux";
-import store from "../Components/Store";
+import store from "../redux/Store.jsx";
 
 function TodoPage() {
   return (

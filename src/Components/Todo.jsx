@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, deleteTodo, toggleComplete, editTodo } from "./TodoSlice";
 import PropTypes from "prop-types";
+import {
+  addTodo,
+  deleteTodo,
+  toggleComplete,
+  editTodo,
+} from "../redux/TodoSlice";
 import clsx from "clsx";
 import { styled, css } from "@mui/system";
 import { Modal as BaseModal } from "@mui/base/Modal";
@@ -116,10 +121,10 @@ const Todo = () => {
               placeholder="Todo Description Here"
               onChange={handleDescriptionChange}
             ></input>
-            <Button onClick={editMode ? handleEditTodo : handleAddTodo}>
+            <ModalButton onClick={editMode ? handleEditTodo : handleAddTodo}>
               {editMode ? "Update Todo" : "+ Add"}
-            </Button>
-            <Button onClick={handleClose}>Cancel</Button>
+            </ModalButton>
+            <ModalButton onClick={handleClose}>Cancel</ModalButton>
           </ModalContent>
         </Modal>
       </div>
@@ -198,7 +203,6 @@ const Todo = () => {
   );
 };
 
-export default Todo;
 const Backdrop = React.forwardRef((props, ref) => {
   const { open, className, ...other } = props;
   return (
@@ -211,9 +215,13 @@ const Backdrop = React.forwardRef((props, ref) => {
 });
 
 Backdrop.propTypes = {
-  className: PropTypes.string.isRequired,
   open: PropTypes.bool,
+  className: PropTypes.string,
 };
+
+Backdrop.displayName = "Backdrop";
+
+export default Todo;
 
 const blue = {
   200: "#99CCFF",

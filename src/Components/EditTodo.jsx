@@ -34,8 +34,8 @@ export default function EditTodo() {
           <input type="text" placeholder="Todo Name Here"></input>
           <p className="modal-description">Description</p>
           <input type="text" placeholder="Todo Description Here"></input>
-          <Button>+ Add</Button>
-          <Button>Cancel</Button>
+          <ModalButton>+ Add</ModalButton>
+          <ModalButton>Cancel</ModalButton>
         </ModalContent>
       </Modal>
     </div>
@@ -52,6 +52,8 @@ const Backdrop = React.forwardRef((props, ref) => {
     />
   );
 });
+
+Backdrop.displayName = "Backdrop";
 
 Backdrop.propTypes = {
   className: PropTypes.string.isRequired,
@@ -136,7 +138,7 @@ const ModalContent = styled("div")(
       color: ${theme.palette.mode === "dark" ? grey[400] : grey[800]};
       margin-bottom: 4px;
     }
-  `,
+  `
 );
 
 const TriggerButton = styled(Button)(
@@ -168,7 +170,7 @@ const TriggerButton = styled(Button)(
     box-shadow: 0 0 0 4px ${theme.palette.mode === "dark" ? blue[300] : blue[200]};
     outline: none;
   }
-`,
+`
 );
 
 const ModalButton = styled(Button)(
@@ -212,5 +214,5 @@ const ModalButton = styled(Button)(
       background-color: ${blue[500]};
     }
   }
-`,
+`
 );
